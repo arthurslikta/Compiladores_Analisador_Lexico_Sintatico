@@ -7,9 +7,8 @@
 #include <ctype.h>
 #include <math.h>
 
-/* =========================================================================
-   1. DEFINIÇÃO DOS ÁTOMOS (TOKENS) DA LINGUAGEM PORTUGOL
-   ========================================================================= */
+
+   // DEFINIÇÃO DOS ÁTOMOS (TOKENS) DA LINGUAGEM PORTUGOL
 typedef enum {
     // Palavras Reservadas
     ATOMO_ALGORITMO,
@@ -57,7 +56,7 @@ typedef enum {
     ATOMO_OP_MAIOR,       // '>'
     ATOMO_OP_IGUAL,       // '='
 
-    // Operadores Aritméticos / Lógicos adicionais
+    // Operadores
     ATOMO_OP_SOMA,        // '+'
     ATOMO_OP_SUB,         // '-'
     ATOMO_OP_MULT,        // '*'
@@ -68,10 +67,9 @@ typedef enum {
     ATOMO_ERRO,
     ATOMO_FIM_ARQUIVO
 } TAtomo;
-
-/* =========================================================================
-   2. ESTRUTURA TInfoAtomo
-   ========================================================================= */
+ 
+//   ESTRUTURA TInfoAtomo
+    
 typedef struct {
     TAtomo atomo;
     int linha;
@@ -81,18 +79,16 @@ typedef struct {
         char ch;        // atributo para constchar
     } atributo;
 } TInfoAtomo;
-
-/* =========================================================================
-   3. VARIÁVEIS GLOBAIS
-   ========================================================================= */
+ 
+//   VARIÁVEIS GLOBAIS
+    
 FILE *arquivo_fonte = NULL;
 int linha_atual = 1;
 TInfoAtomo lookahead;
 int total_linhas_analisadas = 0;
-
-/* =========================================================================
-   4. PROTÓTIPOS DAS FUNÇÕES
-   ========================================================================= */
+ 
+//  PROTÓTIPOS DAS FUNÇÕES
+    
 TInfoAtomo obter_atomo(void);
 void consome(TAtomo atomo_esperado);
 const char* nome_atomo(TAtomo atomo);
@@ -123,10 +119,9 @@ void operador_adicao(void);
 void termo(void);
 void operador_multiplicacao(void);
 void fator(void);
-
-/* =========================================================================
-   5. AUXILIARES E IMPRESSÃO DE MENSAGENS DE ERRO
-   ========================================================================= */
+ 
+//   AUXILIARES E IMPRESSÃO DE MENSAGENS DE ERRO
+    
 const char* nome_atomo(TAtomo atomo) {
     switch (atomo) {
         case ATOMO_ALGORITMO: return "algoritmo";
@@ -220,10 +215,9 @@ void erro_sintatico(TAtomo atomo_esperado, TInfoAtomo atomo_encontrado) {
     if (arquivo_fonte) fclose(arquivo_fonte);
     exit(1);
 }
-
-/* =========================================================================
-   6. ANALISADOR LÉXICO (obter_atomo)
-   ========================================================================= */
+ 
+//   ANALISADOR LÉXICO (obter_atomo)
+    
 TInfoAtomo obter_atomo(void) {
     TInfoAtomo info;
     int c;
@@ -451,10 +445,9 @@ TInfoAtomo obter_atomo(void) {
         erro_lexico("caractere invalido ou desconhecido");
     }
 }
-
-/* =========================================================================
-   7. ANALISADOR SINTÁTICO (consome e ASDR)
-   ========================================================================= */
+ 
+//  ANALISADOR SINTÁTICO (consome e ASDR)
+    
 void consome(TAtomo atomo_esperado) {
     if (lookahead.atomo == atomo_esperado) {
         imprime_info_atomo(lookahead);
@@ -752,10 +745,9 @@ void fator(void) {
         erro_sintatico(ATOMO_IDENTIFICADOR, lookahead);
     }
 }
-
-/* =========================================================================
-   8. FUNÇÃO PRINCIPAL (MAIN)
-   ========================================================================= */
+ 
+//  FUNÇÃO PRINCIPAL
+    
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         printf("Uso: %s <arquivo_fonte>\n", argv[0]);
