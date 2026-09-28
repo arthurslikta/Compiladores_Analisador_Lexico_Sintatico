@@ -15,3 +15,9 @@ A palavra nao ficou inclusa nas reservadas, por mais que a descrição do projet
 **Para compilar:**
 ```bash
 gcc -Wall -Wno-unused-result -g -Og compilador.c -o compilador
+```
+
+
+**Para executar:**
+```bash
+./compilador <arquivo-fonte>
