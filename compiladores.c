@@ -8,7 +8,7 @@
 #include <math.h>
 
 
-   // DEFINIÇÃO DOS ÁTOMOS (TOKENS) DA LINGUAGEM PORTUGOL
+   // DEFINIÇÃO DOS ÁTOMOS DA LINGUAGEM
 typedef enum {
     // Palavras Reservadas
     ATOMO_ALGORITMO,
