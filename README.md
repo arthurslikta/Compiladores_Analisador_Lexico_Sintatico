@@ -8,7 +8,8 @@ Projeto de construção das fases de análise léxica e sintática de um compila
 
 
 
-**Casos Inesperados**
+**Casos Inesperados:**
+
 A palavra nao ficou inclusa nas reservadas, por mais que a descrição do projeto não cite ela como tal.
 
 **Para compilar:**
